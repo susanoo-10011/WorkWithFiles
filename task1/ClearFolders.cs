@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace task1
 {
@@ -17,7 +13,7 @@ namespace task1
             try
             {
                 DirectoryInfo directoryInfo = new DirectoryInfo(userInput);
-                TimeSpan timeSpan = TimeSpan.FromMinutes(2);
+                TimeSpan timeSpan = TimeSpan.FromMinutes(30);
 
                 if (!directoryInfo.Exists )
                 {
