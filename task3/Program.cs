@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace task3
 {
@@ -13,13 +9,22 @@ namespace task3
             Console.Write("Укажите путь к папке: ");
             string path = Console.ReadLine();
 
-            var count = DataAboutFiles.CountFilesInFolder(path);
-            Console.WriteLine($"Общее количество файлов: {count}");
+            var initialNumberFiles = DataAboutFiles.CountFilesInFolder(path);
+            Console.WriteLine($"Общее количество файлов: {initialNumberFiles}");
+            var initialSize = DataAboutFiles.GetDirSize(path);
+            Console.WriteLine($"Исходный размер папки: {initialSize} байт.");
 
-            var size = DataAboutFiles.GetDirSize(path);
-            Console.WriteLine($"Исходный размер папки: {size} байт.");
+            ClearFolders.DeleteFolder(path);
+            Console.WriteLine("\nПапка очищена!\n");
 
-
+            var currentNumberFiles = DataAboutFiles.CountFilesInFolder(path);
+            Console.WriteLine($"Текущее количество количество файлов: {currentNumberFiles}");
+            var differenceFiles = initialNumberFiles - currentNumberFiles;
+            Console.WriteLine($"Файлов удалено: {differenceFiles}");
+            var currentSize = DataAboutFiles.GetDirSize(path);
+            Console.WriteLine($"Текущий размер папки: {currentSize} байт.");
+            var differenceSize = initialSize - currentSize;
+            Console.WriteLine($"Освобождено: {differenceSize}");
 
             Console.ReadKey();
         }
